@@ -65,4 +65,18 @@ class BackgroundLayer extends AbstractLayer implements BackgroundLayerInterface
         $this->add(['image.flip' => $mode]);
         return $this;
     }
+
+    /**
+     * @inheritDoc
+     * @param float $angle angle of rotation
+     * @param null|array color of uncovered pixels
+     */
+    public function rotate($angle, $bgColor = null)
+    {
+        $this->add(['image.rotate.angle' => $angle]);
+        if ($bgColor) {
+            $this->add(['image.rotate.bgcolor' => $bgColor]);
+        }
+        return $this;
+    }
 }

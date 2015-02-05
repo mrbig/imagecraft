@@ -268,6 +268,24 @@ class ResourceHelper
     }
 
     /**
+     * Rotate the image with the given degress
+     * @param  resource $srcResource the image resource
+     * @param  float    $angle angle of rotation in degress, counter-clockwise
+     * @param  null,array $bgColor color of the uncovered area
+     * @return resource the rotated
+     */
+    public function getRotatedGdResource($srcResource, $angle, $bgColor = null) {
+        if ($bgColor) {
+            $bgColor = imagecolorallocate($resource, $bgColor[0], $bgColor[1], $bgColor[2]);
+        } else {
+            $bgColor = 0;
+        }
+        $dstResource = imagerotate($srcResource, $angle, $bgColor);
+        imagedestroy($srcResource);
+        return $dstResource;
+    }
+
+    /**
      * @param  resource $dstResource
      * @param  resource $srcResource
      * @param  int      $x

@@ -93,6 +93,14 @@ class ImageFactory
             $contents = $layer->get('image.contents');
             $resource = $this->rh->getGdResourceFromContents($format, $contents, true);
         }
+        
+        if ($layer->has('image.rotate.angle')) {
+            $resource = $this->rh->getRotatedGdResource(
+                $resource,
+                $layer->get('image.rotate.angle'),
+                $layer->get('image.rotate.bgcolor')
+            );
+        }
 
         if ($layer->has('image.resize.width')) {
             $resource = $this->rh->getResizedGdResource(

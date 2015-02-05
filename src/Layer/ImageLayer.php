@@ -79,4 +79,18 @@ class ImageLayer extends AbstractLayer implements ImageLayerInterface
 
         return $this;
     }
+
+    /**
+     * @inheritDoc
+     * @param int $angle angle of rotation
+     * @param null|array color of uncovered pixels
+     */
+    public function rotate($angle, $bgColor = null)
+    {
+        $this->add(['image.rotate.angle' => $angle]);
+        if ($bgColor) {
+            $this->add(['image.rotate.bgcolor' => $bgColor]);
+        }
+        return $this;
+    }
 }
