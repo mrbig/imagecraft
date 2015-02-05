@@ -55,4 +55,14 @@ class BackgroundLayer extends AbstractLayer implements BackgroundLayerInterface
 
         return $this;
     }
+
+    /**
+     * @inheritDoc
+     * @param int $mode one of the IMG_FLIP_ constants
+     */
+    public function flip($mode)
+    {
+        $this->add(['image.flip' => $mode]);
+        return $this;
+    }
 }

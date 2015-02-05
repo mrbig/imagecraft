@@ -103,6 +103,10 @@ class ImageFactory
                 true
             );
         }
+        
+        if ($layer->has('image.flip')) {
+            $resource = $this->rh->getFlippedGdResource($resource, $layer->get('image.flip'));
+        }
 
         $layer->set('final.resource', $resource);
     }

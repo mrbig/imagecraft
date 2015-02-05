@@ -255,6 +255,17 @@ class ResourceHelper
 
         return $dstResource;
     }
+    
+    /**
+     * Flip the image
+     * @param  resource $srcResource the image resource
+     * @param  int      $mode flip mode
+     * @return resource the flipped resource
+     */
+    public function getFlippedGdResource($srcResource, $mode) {
+        imageflip($srcResource, $mode);
+        return $srcResource;
+    }
 
     /**
      * @param  resource $dstResource
